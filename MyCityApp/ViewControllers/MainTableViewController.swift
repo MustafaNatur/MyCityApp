@@ -11,7 +11,7 @@ class MainTableViewController: UITableViewController {
 
 
     
-    let places = Place.getPlaces()
+    var places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,12 @@ class MainTableViewController: UITableViewController {
         title = "Places"
     }
     
-    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
-        
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        if let vc = segue.source as? NewPlaceTableViewController {
+            vc.savePlace()
+            places.append(vc.newPlace!)
+        }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
