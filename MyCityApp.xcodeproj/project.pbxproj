@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		97CA151229A793D300BCD6CD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA151129A793D300BCD6CD /* CustomTableViewCell.swift */; };
+		97CA151929A79A1400BCD6CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA151829A79A1400BCD6CD /* Model.swift */; };
 		97F98D2729A7754000CE6925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F98D2629A7754000CE6925 /* AppDelegate.swift */; };
 		97F98D2929A7754000CE6925 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F98D2829A7754000CE6925 /* SceneDelegate.swift */; };
 		97F98D2E29A7754000CE6925 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F98D2C29A7754000CE6925 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		97CA151129A793D300BCD6CD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		97CA151829A79A1400BCD6CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		97F98D2329A7754000CE6925 /* MyCityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97F98D2629A7754000CE6925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97F98D2829A7754000CE6925 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97CA151329A7999D00BCD6CD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				97F98D3A29A7772D00CE6925 /* MainTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		97CA151429A799AA00BCD6CD /* Custom elements */ = {
+			isa = PBXGroup;
+			children = (
+				97CA151129A793D300BCD6CD /* CustomTableViewCell.swift */,
+			);
+			path = "Custom elements";
+			sourceTree = "<group>";
+		};
+		97CA151529A799CC00BCD6CD /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				97F98D2629A7754000CE6925 /* AppDelegate.swift */,
+				97F98D2829A7754000CE6925 /* SceneDelegate.swift */,
+				97F98D2F29A7754100CE6925 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		97CA151629A799E000BCD6CD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				97F98D2C29A7754000CE6925 /* Main.storyboard */,
+				97F98D3129A7754100CE6925 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		97CA151729A79A0800BCD6CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				97CA151829A79A1400BCD6CD /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		97F98D1A29A7754000CE6925 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +103,11 @@
 		97F98D2529A7754000CE6925 /* MyCityApp */ = {
 			isa = PBXGroup;
 			children = (
-				97F98D2629A7754000CE6925 /* AppDelegate.swift */,
-				97F98D2829A7754000CE6925 /* SceneDelegate.swift */,
-				97F98D2C29A7754000CE6925 /* Main.storyboard */,
-				97CA151129A793D300BCD6CD /* CustomTableViewCell.swift */,
-				97F98D3A29A7772D00CE6925 /* MainTableViewController.swift */,
-				97F98D2F29A7754100CE6925 /* Assets.xcassets */,
-				97F98D3129A7754100CE6925 /* LaunchScreen.storyboard */,
+				97CA151729A79A0800BCD6CD /* Model */,
+				97CA151529A799CC00BCD6CD /* Support */,
+				97CA151629A799E000BCD6CD /* Storyboards */,
+				97CA151429A799AA00BCD6CD /* Custom elements */,
+				97CA151329A7999D00BCD6CD /* ViewControllers */,
 				97F98D3429A7754100CE6925 /* Info.plist */,
 			);
 			path = MyCityApp;
@@ -141,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97CA151929A79A1400BCD6CD /* Model.swift in Sources */,
 				97F98D2729A7754000CE6925 /* AppDelegate.swift in Sources */,
 				97F98D3B29A7772E00CE6925 /* MainTableViewController.swift in Sources */,
 				97CA151229A793D300BCD6CD /* CustomTableViewCell.swift in Sources */,
