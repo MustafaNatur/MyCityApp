@@ -20,7 +20,7 @@ class CustomTableViewCell: UITableViewCell {
         nameLabel.text = place.name
         locationLabel.text = place.location
         typeLabel.text = place.type
-        imageOfPlace.image = place.image
+        imageOfPlace.image = UIImage(data: place.imageData!)
         imageOfPlace.layer.cornerRadius = imageOfPlace.frame.size.height / 2
         imageOfPlace.clipsToBounds = true
     }

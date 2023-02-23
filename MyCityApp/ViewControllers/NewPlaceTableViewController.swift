@@ -8,8 +8,7 @@
 import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
-
-    var newPlace:Place?
+    
     var imageChanged = false
 
     @IBOutlet weak var mainImageView: UIView!
@@ -17,11 +16,11 @@ class NewPlaceTableViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         imageOfPlace.layer.cornerRadius = 15
         
         saveButton.isEnabled = false
@@ -35,7 +34,17 @@ class NewPlaceTableViewController: UITableViewController {
     
     func savePlace() {
         let image = imageChanged ? imageOfPlace.image:UIImage(named: "defaultImage")
-        newPlace = Place(name: nameTextField.text!, location: locationTextField.text, type: typeTextField.text, image: image)
+        
+        let imageData = image?.pngData()
+        
+        let newPlace = Place()
+        
+        newPlace.name = nameTextField.text!
+        newPlace.location = locationTextField.text
+        newPlace.type = typeTextField.text
+        newPlace.imageData = imageData
+        
+        StorageManager.saveObject(newPlace)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

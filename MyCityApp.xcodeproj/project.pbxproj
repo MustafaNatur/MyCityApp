@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9713F47929A812F3003EED81 /* Storage manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9713F47829A812F3003EED81 /* Storage manager.swift */; };
 		97CA151229A793D300BCD6CD /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA151129A793D300BCD6CD /* CustomTableViewCell.swift */; };
 		97CA151929A79A1400BCD6CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA151829A79A1400BCD6CD /* Model.swift */; };
 		97CA151B29A7B26900BCD6CD /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA151A29A7B26900BCD6CD /* NewPlaceTableViewController.swift */; };
@@ -23,6 +24,7 @@
 		24208ADE7F43291BB8E878B3 /* Pods_MyCityApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCityApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4314C8EF2C0DAC1D225C1625 /* Pods-MyCityApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCityApp.debug.xcconfig"; path = "Target Support Files/Pods-MyCityApp/Pods-MyCityApp.debug.xcconfig"; sourceTree = "<group>"; };
 		68658485451AF54D8EFC4431 /* Pods-MyCityApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCityApp.release.xcconfig"; path = "Target Support Files/Pods-MyCityApp/Pods-MyCityApp.release.xcconfig"; sourceTree = "<group>"; };
+		9713F47829A812F3003EED81 /* Storage manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage manager.swift"; sourceTree = "<group>"; };
 		97CA151129A793D300BCD6CD /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		97CA151829A79A1400BCD6CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		97CA151A29A7B26900BCD6CD /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				97CA151829A79A1400BCD6CD /* Model.swift */,
+				9713F47829A812F3003EED81 /* Storage manager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				97F98D2729A7754000CE6925 /* AppDelegate.swift in Sources */,
 				97F98D3B29A7772E00CE6925 /* MainTableViewController.swift in Sources */,
 				97CA151229A793D300BCD6CD /* CustomTableViewCell.swift in Sources */,
+				9713F47929A812F3003EED81 /* Storage manager.swift in Sources */,
 				97F98D2929A7754000CE6925 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
