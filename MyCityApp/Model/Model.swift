@@ -6,26 +6,13 @@
 //
 
 import Foundation
-import UIKit
+import RealmSwift
 
-struct Place {
-    
-    var name:String
-    var location:String?
-    var type:String?
-    var image: UIImage?
-    
-    
-    static let places = [
-            "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-            "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-            "Speak Easy", "Morris Pub", "Вкусные истории",
-            "Классик", "Love&Life", "Шок", "Бочка"
-    ]
 
-    static func getPlaces() -> [Place] {
-        var arr:[Place] = []
-        places.forEach{arr.append(Place(name: $0, location: "None", type: "None", image: UIImage(named: $0)))}
-        return arr
-    }
+
+class Place: Object {
+    @objc dynamic var name:String = ""
+    @objc dynamic var location:String?
+    @objc dynamic var type:String?
+    @objc dynamic var imageData: Data?
 }
