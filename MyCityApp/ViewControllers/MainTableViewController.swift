@@ -18,6 +18,10 @@ class MainTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Places"
     }
+    
+    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+        
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
