@@ -9,32 +9,62 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageOfPlace.layer.cornerRadius = 15
-    }
+    var newPlace:Place?
+    var imageChanged = false
 
     @IBOutlet weak var mainImageView: UIView!
     @IBOutlet weak var imageOfPlace: UIImageView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var typeTextField: UITextField!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageOfPlace.layer.cornerRadius = 15
+        
+        saveButton.isEnabled = false
+        
+        nameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+    }
+    
+    @IBAction func cancleButtonPessedr(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
+    func savePlace() {
+        let image = imageChanged ? imageOfPlace.image:UIImage(named: "defaultImage")
+        newPlace = Place(name: nameTextField.text!, location: locationTextField.text, type: typeTextField.text, image: image)
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
+            
+            let cameraIcon = UIImage(systemName: "camera")
+            let photoIcon = UIImage(systemName: "photo")
+            
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             let photo = UIAlertAction(title: "Choose from gallery", style: .default) {
                 _ in self.chooseImagePicker(source: .photoLibrary)
             }
+            photo.setValue(photoIcon, forKey: "image")
+            photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+
             
             let camera = UIAlertAction(title: "Make photo", style: .default) {
                 _ in self.chooseImagePicker(source: .camera)
             }
+            camera.setValue(cameraIcon, forKey: "image")
+            camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+
             
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             
             actionSheet.addAction(camera)
             actionSheet.addAction(photo)
             actionSheet.addAction(cancel)
-            
             present(actionSheet, animated: true)
 
         } else {
@@ -68,6 +98,15 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
         imageOfPlace.contentMode = .scaleAspectFill
         imageOfPlace.clipsToBounds = true
         mainImageView.backgroundColor = .systemBackground
+        imageChanged = true
         dismiss(animated: true)
+    }
+    
+    @objc private func textFieldChanged() {
+        if (nameTextField.text?.isEmpty == false) {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
     }
 }
