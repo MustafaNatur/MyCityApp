@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Cosmos
 
 class NewPlaceTableViewController: UITableViewController {
     
     var imageChanged = false
+    var newRating = 0.0
     var editPlace:Place?
 
     @IBOutlet weak var mainImageView: UIView!
@@ -18,6 +20,7 @@ class NewPlaceTableViewController: UITableViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var ratingControl: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,8 @@ class NewPlaceTableViewController: UITableViewController {
         saveButton.isEnabled = false
         nameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         changeViewForEdit()
+        
+        ratingControl.didTouchCosmos = {rating in self.newRating = rating}
     }
     
     @IBAction func cancleButtonPressed(_ sender: UIBarButtonItem) {
@@ -40,6 +45,7 @@ class NewPlaceTableViewController: UITableViewController {
         newPlace.location = locationTextField.text
         newPlace.type = typeTextField.text
         newPlace.imageData = imageData
+        newPlace.rating = newRating
         
         if editPlace != nil {
             try! realm.write {
@@ -47,6 +53,7 @@ class NewPlaceTableViewController: UITableViewController {
                 editPlace?.location = newPlace.location
                 editPlace?.type = newPlace.type
                 editPlace?.imageData = newPlace.imageData
+                editPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)
@@ -60,6 +67,7 @@ class NewPlaceTableViewController: UITableViewController {
             locationTextField.text = place.location
             typeTextField.text = place.type
             imageOfPlace.image = UIImage(data: place.imageData!)
+            ratingControl.rating = place.rating
             imageOfPlace.contentMode = .scaleAspectFill
             imageOfPlace.clipsToBounds = true
             mainImageView.backgroundColor = .systemBackground
