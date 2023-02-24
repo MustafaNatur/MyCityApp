@@ -12,7 +12,7 @@ class NewPlaceTableViewController: UITableViewController {
     
     var imageChanged = false
     var newRating = 0.0
-    var editPlace:Place?
+    var currentPlace:Place?
 
     @IBOutlet weak var mainImageView: UIView!
     @IBOutlet weak var imageOfPlace: UIImageView!
@@ -21,6 +21,7 @@ class NewPlaceTableViewController: UITableViewController {
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var ratingControl: CosmosView!
+    @IBOutlet weak var showMapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,14 @@ class NewPlaceTableViewController: UITableViewController {
         changeViewForEdit()
         
         ratingControl.didTouchCosmos = {rating in self.newRating = rating}
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showMap" else {return}
+        
+        if let mapVc = segue.destination as? MapViewController {
+            mapVc.place = currentPlace
+        }
     }
     
     @IBAction func cancleButtonPressed(_ sender: UIBarButtonItem) {
@@ -47,13 +56,13 @@ class NewPlaceTableViewController: UITableViewController {
         newPlace.imageData = imageData
         newPlace.rating = newRating
         
-        if editPlace != nil {
+        if currentPlace != nil {
             try! realm.write {
-                editPlace?.name = newPlace.name
-                editPlace?.location = newPlace.location
-                editPlace?.type = newPlace.type
-                editPlace?.imageData = newPlace.imageData
-                editPlace?.rating = newPlace.rating
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)
@@ -61,7 +70,7 @@ class NewPlaceTableViewController: UITableViewController {
     }
     
     func changeViewForEdit() {
-        if let place = editPlace {
+        if let place = currentPlace {
             setupNavigationController()
             nameTextField.text = place.name
             locationTextField.text = place.location
@@ -74,6 +83,8 @@ class NewPlaceTableViewController: UITableViewController {
             imageChanged = true
             saveButton.isEnabled = true
             title = place.name
+        } else {
+            showMapButton.isEnabled = false
         }
     }
     

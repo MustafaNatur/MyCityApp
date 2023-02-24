@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,12 +32,26 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-Us-6bZ">
                                                     <rect key="frame" x="15" y="15" width="400" height="220"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8p-61-fDh">
+                                                    <rect key="frame" x="372" y="192" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="89P-BA-7fV"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Mzj-SA-DDn"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map"/>
+                                                    <connections>
+                                                        <segue destination="6bo-vO-9LF" kind="presentation" identifier="showMap" id="rUu-1C-EBn"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="X8p-61-fDh" secondAttribute="bottom" constant="8" id="C9i-0a-B8V"/>
                                                 <constraint firstItem="RQf-Us-6bZ" firstAttribute="leading" secondItem="lfi-dJ-TS6" secondAttribute="leading" constant="15" id="HyL-hN-6db"/>
                                                 <constraint firstItem="RQf-Us-6bZ" firstAttribute="top" secondItem="lfi-dJ-TS6" secondAttribute="top" constant="15" id="Who-6e-fWA"/>
                                                 <constraint firstAttribute="trailing" secondItem="RQf-Us-6bZ" secondAttribute="trailing" constant="15" id="XrB-92-Wwy"/>
+                                                <constraint firstAttribute="trailing" secondItem="X8p-61-fDh" secondAttribute="trailing" constant="8" id="ZBt-zs-a9N"/>
                                                 <constraint firstAttribute="bottom" secondItem="RQf-Us-6bZ" secondAttribute="bottom" constant="15" id="div-uJ-vnt"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -211,6 +226,7 @@
                         <outlet property="nameTextField" destination="q6J-Ex-C51" id="eau-q7-A5p"/>
                         <outlet property="ratingControl" destination="ESi-j6-rU5" id="cjb-iI-sGX"/>
                         <outlet property="saveButton" destination="lz8-kC-UEu" id="TDR-Px-ONz"/>
+                        <outlet property="showMapButton" destination="X8p-61-fDh" id="N27-75-icn"/>
                         <outlet property="typeTextField" destination="9Tr-2g-3cX" id="28w-Bx-elc"/>
                     </connections>
                 </tableViewController>
@@ -218,6 +234,66 @@
                 <exit id="z5K-dh-Opv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2306.5116279069766" y="-64.377682403433482"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="rbl-wf-Esg">
+            <objects>
+                <viewController id="6bo-vO-9LF" customClass="MapViewController" customModule="MyCityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZhW-Ja-hLF">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zta-aP-rzD">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZg-V4-Yz7">
+                                <rect key="frame" x="321.66666666666669" y="79" width="92" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="3OG-KZ-Hv7"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Cancle"/>
+                                <connections>
+                                    <action selector="cancleButton:" destination="6bo-vO-9LF" eventType="touchUpInside" id="EX3-Px-YvX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahS-5s-FO3">
+                                <rect key="frame" x="319" y="752" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="0Ni-xV-TlQ"/>
+                                    <constraint firstAttribute="height" constant="95" id="OvC-3P-4co"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Lcation.png" imagePadding="-1">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="centerOnUserLocation:" destination="6bo-vO-9LF" eventType="touchUpInside" id="1Yn-Uh-vcM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Yeh-jp-ZQz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Zta-aP-rzD" secondAttribute="bottom" id="3Qe-Y9-zmq"/>
+                            <constraint firstItem="Yeh-jp-ZQz" firstAttribute="trailing" secondItem="bZg-V4-Yz7" secondAttribute="trailing" constant="16.329999999999998" id="7gk-bZ-69N"/>
+                            <constraint firstItem="Yeh-jp-ZQz" firstAttribute="trailing" secondItem="ahS-5s-FO3" secondAttribute="trailing" constant="16" id="HMK-2a-edn"/>
+                            <constraint firstItem="Yeh-jp-ZQz" firstAttribute="bottom" secondItem="ahS-5s-FO3" secondAttribute="bottom" constant="16" id="XgJ-QM-5YB"/>
+                            <constraint firstItem="bZg-V4-Yz7" firstAttribute="top" secondItem="Yeh-jp-ZQz" secondAttribute="top" constant="20" id="mlh-m6-eLe"/>
+                            <constraint firstItem="Zta-aP-rzD" firstAttribute="trailing" secondItem="Yeh-jp-ZQz" secondAttribute="trailing" id="u1f-G7-UhT"/>
+                            <constraint firstItem="Zta-aP-rzD" firstAttribute="top" secondItem="ZhW-Ja-hLF" secondAttribute="top" id="xaj-W1-XuO"/>
+                            <constraint firstItem="Zta-aP-rzD" firstAttribute="leading" secondItem="Yeh-jp-ZQz" secondAttribute="leading" id="xiJ-37-mKa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Zta-aP-rzD" id="6Ld-75-Hbw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvh-Yf-gLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3104.8000000000002" y="-64.31784107946028"/>
         </scene>
         <!--Main Table View Controller-->
         <scene sceneID="cGq-hI-97G">
@@ -353,7 +429,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="t0g-y2-qZc">
                             <connections>
-                                <segue destination="WQu-3R-Xi9" kind="show" id="dS3-uA-dAl"/>
+                                <segue destination="WQu-3R-Xi9" kind="show" identifier="toAdd" id="dS3-uA-dAl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -418,7 +494,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="Lcation.png" width="90" height="90"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
+        <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

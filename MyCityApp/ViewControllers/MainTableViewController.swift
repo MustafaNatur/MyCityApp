@@ -50,7 +50,7 @@ class MainTableViewController: UIViewController {
                 } else {
                     place = places[tableView.indexPathForSelectedRow!.row]
                 }
-                vc.editPlace = place
+                vc.currentPlace = place
             }
         }
     }
