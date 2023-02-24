@@ -13,6 +13,7 @@ class NewPlaceTableViewController: UITableViewController {
     var imageChanged = false
     var newRating = 0.0
     var currentPlace:Place?
+    
 
     @IBOutlet weak var mainImageView: UIView!
     @IBOutlet weak var imageOfPlace: UIImageView!
@@ -34,16 +35,22 @@ class NewPlaceTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showMap" else {return}
+        //guard segue.identifier == "showPlace" else {return}
         
         if let mapVc = segue.destination as? MapViewController {
-            mapVc.place = currentPlace
+            mapVc.delegateMap = self
+            mapVc.place.name = nameTextField.text!
+            mapVc.place.location = locationTextField.text
+            mapVc.place.imageData = imageOfPlace.image?.pngData()
+            mapVc.incomeSegueIdentier = segue.identifier!
         }
     }
     
     @IBAction func cancleButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
+
     
     func savePlace() {
         let image = imageChanged ? imageOfPlace.image:UIImage(named: "defaultImage")
@@ -83,8 +90,6 @@ class NewPlaceTableViewController: UITableViewController {
             imageChanged = true
             saveButton.isEnabled = true
             title = place.name
-        } else {
-            showMapButton.isEnabled = false
         }
     }
     
@@ -163,4 +168,12 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
             saveButton.isEnabled = false
         }
     }
+}
+
+extension NewPlaceTableViewController: MapViewControllerDelegate {
+    func getAdress(_ address: String?) {
+        locationTextField.text = address
+    }
+    
+    
 }
