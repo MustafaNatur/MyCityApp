@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         let config = Realm.Configuration(
-            schemaVersion: 1)
+            schemaVersion: 2)
         // Use this configuration when opening realms
         Realm.Configuration.defaultConfiguration = config
         guard let _ = (scene as? UIWindowScene) else { return }
