@@ -40,6 +40,7 @@ class NewPlaceTableViewController: UITableViewController {
         if let mapVc = segue.destination as? MapViewController {
             mapVc.delegateMap = self
             mapVc.place.name = nameTextField.text!
+            mapVc.place.type = typeTextField.text!
             mapVc.place.location = locationTextField.text
             mapVc.place.imageData = imageOfPlace.image?.pngData()
             mapVc.incomeSegueIdentier = segue.identifier!
